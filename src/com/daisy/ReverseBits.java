@@ -1,17 +1,20 @@
 package com.daisy;
 
 public class ReverseBits {
-    public int reverseBits(int n) {
-        if(n==0) return 0;
+    private static int reverseBits(int n){
+        if ( n == 0 ) return 0;
         int res = 0;
-        for(int i=0; i<32; i++){
+        for (int i = 0; i < 32; i++){
+            res <<= 1;
+            if((n & 1) == 1) res++;
+            n >>= 1;
 
         }
-        return 0;
+        return res;
     }
-
 
     public static void main(String[] args){
-        System.out.println( 0 & 1);
+        System.out.println(reverseBits(2));
     }
+
 }
