@@ -7,41 +7,32 @@ import java.util.List;
 public class LetterCombinationsofaPhoneNumber {
 
     public static List<String> letterCombinations(String digits){
-        HashMap<Character, char[]> map = new HashMap<>();
-        map.put('2', new char[]{'a', 'b', 'c'});
-        map.put('3', new char[]{'d', 'e', 'f'});
-        map.put('4', new char[]{'g', 'h', 'i'});
-        map.put('5', new char[]{'j', 'k', 'l'});
-        map.put('6', new char[]{'m', 'n', 'o'});
-        map.put('7', new char[]{'p', 'q', 'r', 's'});
-        map.put('8', new char[]{'t', 'u', 'v'});
-        map.put('9', new char[]{'w', 'x', 'y', 'z'});
+        String[] digitletter = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        List<String> result = new ArrayList<String>();
+        if(digits.length() == 0) return result;
 
-        List<String> res = new ArrayList<>();
-        if(digits.equals("")) return res;
-
-        helper(res, new StringBuilder(), digits, 0, map);
-
-        return res;
+        result.add("");
+        for(int i=0; i<digits.length(); i++){
+            result = combine(digitletter[digits.charAt(i)-'0'], result);
+        }
+        return result;
     }
 
-    public static void helper(List<String> res, StringBuilder sb, String digits, int index, HashMap<Character, char[]> map){
-        if(index >= digits.length()){
-            res.add(sb.toString());
-            return;
-        }
+    public static List<String> combine(String digit, List<String> l){
+        List<String> result = new ArrayList<>();
 
-        char c = digits.charAt(index);
-        char[] arr = map.get(c);
-
-        for(int i=0; i<arr.length; i++){
-            sb.append(arr[i]);
-            helper(res, sb, digits, index+1, map);
-            sb.deleteCharAt(sb.length()-1);
+        for(int i=0; i<digit.length(); i++){
+            for(String x:l){
+                result.add(x + digit.charAt(i));
+            }
         }
+        return result;
     }
 
     public static void main(String[] args){
         System.out.println(letterCombinations("23"));
+        System.out.println('2'-'0');
+
     }
+
 }
