@@ -32,7 +32,7 @@ public class ReorderList {
     }
 
     public static ListNode reverseList(ListNode head){
-        if(head == null || head.next == null) return;
+        if(head == null || head.next == null) return head;
         ListNode nextNode = head.next;
         head.next = null;
         while(nextNode != null){
