@@ -1,6 +1,5 @@
 package com.daisy;
 
-import sun.security.util.Length;
 
 public class LengthofLastWord {
 
