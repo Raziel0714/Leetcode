@@ -1,7 +1,5 @@
 package com.daisy;
 
-import com.sun.org.apache.xerces.internal.xs.LSInputList;
-
 import java.util.LinkedList;
 import java.util.List;
 
